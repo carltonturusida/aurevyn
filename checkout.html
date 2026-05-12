@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Checkout — Aurevyn</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0b10'/%3E%3Cpath d='M16 46 L32 14 L48 46 Z' fill='none' stroke='%23c8a96a' stroke-width='4'/%3E%3C/svg%3E"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/><link rel="stylesheet" href="css/animations.css"/><link rel="stylesheet" href="css/responsive.css"/>
+</head><body>
+<div id="loader" class="loader"><div class="loader-mark">A</div></div>
+<header class="site-header" id="siteHeader"><div class="container header-inner">
+  <a href="index.html" class="logo"><span class="logo-mark">◈</span><span class="logo-text">AUREVYN</span></a>
+  <nav class="primary-nav" id="primaryNav">
+    <a href="index.html" class="nav-link">Home</a><a href="shop.html" class="nav-link">Shop</a>
+    <a href="about.html" class="nav-link">About</a><a href="contact.html" class="nav-link">Contact</a>
+  </nav>
+  <div class="header-actions">
+    <button class="icon-btn" id="searchToggle" aria-label="Search"><svg viewBox="0 0 24 24" width="20" height="20"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+    <a href="wishlist.html" class="icon-btn" aria-label="Wishlist"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 21s-7-4.35-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6c-2.5 4.65-9.5 9-9.5 9Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span class="badge" id="wishCount">0</span></a>
+    <button class="icon-btn" id="cartToggle" aria-label="Cart"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M4 6h2l2.5 11h10L21 9H7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="20" r="1.5" fill="currentColor"/><circle cx="17" cy="20" r="1.5" fill="currentColor"/></svg><span class="badge" id="cartCount">0</span></button>
+    <button class="icon-btn hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</div>
+<div class="search-bar" id="searchBar"><div class="container"><input type="text" id="searchInput" placeholder="Search…"/><button id="searchClose" class="icon-btn">✕</button></div><div class="search-results container" id="searchResults"></div></div>
+</header>
+
+<section class="page-hero"><div class="container"><span class="eyebrow">Secure checkout</span><h1 class="display sm">Almost there.</h1><p class="lead">Complete your details — we'll deliver in 2–3 working days.</p></div></section>
+
+<section class="section"><div class="container checkout-grid">
+  <form id="checkoutForm" class="checkout-form reveal" novalidate>
+    <h3>Contact</h3>
+    <div class="row"><label>Full name<input id="coName" required/></label><label>Email<input id="coEmail" type="email" required/></label></div>
+    <label>Phone<input id="coPhone" required placeholder="+27…"/></label>
+
+    <h3>Shipping</h3>
+    <label>Street address<input id="coAddress" required/></label>
+    <div class="row"><label>City<input id="coCity" required/></label><label>Province
+      <select id="coProvince"><option>Gauteng</option><option>Western Cape</option><option>KwaZulu-Natal</option><option>Eastern Cape</option><option>Free State</option><option>Limpopo</option><option>Mpumalanga</option><option>North West</option><option>Northern Cape</option></select>
+    </label><label>Postal code<input id="coPostal" required/></label></div>
+
+    <h3>Payment</h3>
+    <div class="pay-options">
+      <label class="pay-opt"><input type="radio" name="pay" value="card" checked/> Credit / Debit card</label>
+      <label class="pay-opt"><input type="radio" name="pay" value="eft"/> Instant EFT</label>
+      <label class="pay-opt"><input type="radio" name="pay" value="snapscan"/> SnapScan</label>
+    </div>
+    <div class="row"><label>Card number<input id="coCard" placeholder="•••• •••• •••• ••••"/></label><label>Expiry<input id="coExp" placeholder="MM/YY"/></label><label>CVC<input id="coCvc" placeholder="123"/></label></div>
+
+    <button class="btn btn-primary lg" type="submit">Place order</button>
+  </form>
+  <aside class="checkout-summary reveal">
+    <h3>Order summary</h3>
+    <div id="coItems"></div>
+    <div class="sum-row"><span>Subtotal</span><span id="coSub">R 0</span></div>
+    <div class="sum-row"><span>Shipping</span><span id="coShip">R 0</span></div>
+    <div class="sum-row"><span>VAT (15%)</span><span id="coVat">R 0</span></div>
+    <div class="sum-row total"><span>Total</span><span id="coTotal">R 0</span></div>
+    <p class="muted small">Free shipping on orders over R 1 500.</p>
+  </aside>
+</div></section>
+
+<div class="modal" id="successModal"><div class="modal-card success"><div class="success-mark">✓</div><h2>Order placed</h2><p>Thank you. A confirmation has been sent to your email.</p><a class="btn btn-primary" href="index.html">Back to home</a></div></div>
+
+<footer class="site-footer"><div class="container footer-bottom"><span>© 2026 Aurevyn — Designed & built by <strong>Carlton Turusida</strong></span></div></footer>
+<aside class="drawer" id="cartDrawer"><div class="drawer-head"><h3>Your cart</h3><button class="icon-btn" id="cartClose">✕</button></div><div class="drawer-body" id="cartBody"></div><div class="drawer-foot" id="cartFoot"></div></aside>
+<div class="overlay" id="overlay"></div><div class="modal" id="quickModal"><div class="modal-card" id="quickContent"></div></div>
+<div id="toast" class="toast"></div><button id="scrollTop" class="scroll-top">↑</button>
+<script src="js/products.js"></script><script src="js/cart.js"></script><script src="js/wishlist.js"></script><script src="js/search.js"></script><script src="js/checkout.js"></script><script src="js/app.js"></script>
+</body></html>
